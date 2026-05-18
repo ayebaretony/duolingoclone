@@ -1,7 +1,8 @@
 import { Image } from "expo-image";
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { styled } from "nativewind";
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from "@/constants/images";
@@ -75,12 +76,17 @@ export default function OnboardingScreen() {
         </View>
 
         <View className="pb-9">
-          <View className="btn-primary h-[84px] w-full flex-row items-center justify-center">
-            <Text className="font-poppins-semibold text-[25px] leading-[32px] text-white">
-              Get Started
-            </Text>
-            <View className="absolute right-[42px] h-[22px] w-[22px] rotate-45 border-r-4 border-t-4 border-white" />
-          </View>
+          <Link href="/sign-up" asChild>
+            <Pressable
+              className="btn-primary h-[84px] w-full flex-row items-center justify-center"
+              style={({ pressed }) => ({ opacity: pressed ? 0.8 : 1 })}
+            >
+              <Text className="font-poppins-semibold text-[25px] leading-[32px] text-white">
+                Get Started
+              </Text>
+              <View className="absolute right-[42px] h-[22px] w-[22px] rotate-45 border-r-4 border-t-4 border-white" />
+            </Pressable>
+          </Link>
         </View>
       </View>
     </SafeAreaView>
