@@ -1,5 +1,6 @@
+import { useAuth } from "@clerk/expo";
 import { Image } from "expo-image";
-import { Link } from "expo-router";
+import { Link, Redirect } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { styled } from "nativewind";
 import { Pressable, Text, View } from "react-native";
@@ -10,6 +11,16 @@ import { images } from "@/constants/images";
 const NativeWindImage = styled(Image);
 
 export default function OnboardingScreen() {
+  const { isLoaded, isSignedIn } = useAuth();
+
+  if (!isLoaded) {
+    return null;
+  }
+
+  if (isSignedIn) {
+    return <Redirect href="/" />;
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
       <StatusBar style="dark" />
