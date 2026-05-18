@@ -1,0 +1,139 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+
+@import "nativewind/theme";
+
+@theme {
+  --color-lingua-purple: #6c4ef5;
+  --color-lingua-deep-purple: #5b3bf6;
+  --color-lingua-blue: #4d8bff;
+  --color-lingua-green: #21c16b;
+
+  --color-success: #21c16b;
+  --color-warning: #ffc800;
+  --color-streak: #ff8a00;
+  --color-error: #ff4d4f;
+  --color-info: #4d8bff;
+
+  --color-text-primary: #0d132b;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-surface: #f6f7fb;
+  --color-background: #ffffff;
+
+  --font-poppins: Poppins-Regular;
+  --font-poppins-medium: Poppins-Medium;
+  --font-poppins-semibold: Poppins-SemiBold;
+  --font-poppins-bold: Poppins-Bold;
+}
+
+@utility app-screen {
+  background-color: var(--color-background);
+}
+
+@utility card {
+  background-color: var(--color-background);
+  border-color: var(--color-border);
+  border-radius: 20px;
+  border-width: 1px;
+  box-shadow: 0 12px 32px rgba(13, 19, 43, 0.06);
+}
+
+@utility section-label {
+  color: var(--color-lingua-deep-purple);
+  font-family: var(--font-poppins-semibold);
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-transform: uppercase;
+}
+
+@utility overline {
+  color: var(--color-text-secondary);
+  font-family: var(--font-poppins-semibold);
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: 18.2px;
+  text-transform: uppercase;
+}
+
+@utility h1 {
+  color: var(--color-text-primary);
+  font-family: var(--font-poppins-bold);
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: 38.4px;
+}
+
+@utility h2 {
+  color: var(--color-text-primary);
+  font-family: var(--font-poppins-semibold);
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 31.2px;
+}
+
+@utility h3 {
+  color: var(--color-text-primary);
+  font-family: var(--font-poppins-semibold);
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+@utility h4 {
+  color: var(--color-text-primary);
+  font-family: var(--font-poppins-medium);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 22.4px;
+}
+
+@utility body-lg {
+  color: var(--color-text-secondary);
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 25.6px;
+}
+
+@utility body-md {
+  color: var(--color-text-secondary);
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 22.4px;
+}
+
+@utility body-sm {
+  color: var(--color-text-secondary);
+  font-family: var(--font-poppins);
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: 20.8px;
+}
+
+@utility caption {
+  color: var(--color-text-secondary);
+  font-family: var(--font-poppins);
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 15.4px;
+}
+
+@utility btn-primary {
+  align-items: center;
+  background-color: var(--color-lingua-deep-purple);
+  border-radius: 999px;
+  box-shadow: 0 8px 16px rgba(91, 59, 246, 0.2);
+  justify-content: center;
+}
+
+@utility btn-label {
+  color: var(--color-background);
+  font-family: var(--font-poppins-semibold);
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 22.4px;
+}
