@@ -1,11 +1,15 @@
-import { Image } from "expo-image";
-import { Link, useRouter } from "expo-router";
+import { useSignIn, useSignUp, useSSO } from "@clerk/expo";
 import { FontAwesome } from "@expo/vector-icons";
+import { Image } from "expo-image";
+import * as Linking from "expo-linking";
+import { Link, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import * as WebBrowser from "expo-web-browser";
 import { styled } from "nativewind";
 import type { MutableRefObject } from "react";
 import { useRef, useState } from "react";
 import {
+  Alert,
   KeyboardAvoidingView,
   Modal,
   Pressable,
@@ -18,6 +22,8 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from "@/constants/images";
+
+WebBrowser.maybeCompleteAuthSession();
 
 const NativeWindImage = styled(Image);
 
@@ -50,23 +56,60 @@ type SocialProvider = {
   name: "Google" | "Facebook" | "Apple";
   iconName: "google" | "facebook" | "apple";
   iconColor: string;
+  strategy: "oauth_google" | "oauth_facebook" | "oauth_apple";
 };
 
 const socialProviders: SocialProvider[] = [
-  { name: "Google", iconName: "google", iconColor: "#4285f4" },
-  { name: "Facebook", iconName: "facebook", iconColor: "#1877f2" },
-  { name: "Apple", iconName: "apple", iconColor: "#0d132b" },
+  {
+    name: "Google",
+    iconName: "google",
+    iconColor: "#4285f4",
+    strategy: "oauth_google",
+  },
+  {
+    name: "Facebook",
+    iconName: "facebook",
+    iconColor: "#1877f2",
+    strategy: "oauth_facebook",
+  },
+  {
+    name: "Apple",
+    iconName: "apple",
+    iconColor: "#0d132b",
+    strategy: "oauth_apple",
+  },
 ];
 
 export function AuthScreen({ mode }: AuthScreenProps) {
   const router = useRouter();
+  const { signIn, fetchStatus: signInFetchStatus } = useSignIn();
+  const { signUp, fetchStatus: signUpFetchStatus } = useSignUp();
+  const { startSSOFlow } = useSSO();
   const copy = screenCopy[mode];
-  const [email, setEmail] = useState("alex@gmail.com");
-  const [password, setPassword] = useState("language1");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [verificationVisible, setVerificationVisible] = useState(false);
   const [code, setCode] = useState(["", "", "", "", "", ""]);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [socialLoading, setSocialLoading] = useState<SocialProvider["name"] | null>(
+    null,
+  );
   const codeInputRefs = useRef<(TextInput | null)[]>([]);
+  const isSubmitting =
+    signInFetchStatus === "fetching" ||
+    signUpFetchStatus === "fetching" ||
+    isVerifying ||
+    socialLoading !== null;
+
+  const showAuthError = (title: string, error: unknown) => {
+    Alert.alert(title, getErrorMessage(error));
+  };
+
+  const goHome = () => {
+    setVerificationVisible(false);
+    router.replace("/");
+  };
 
   const openVerification = () => {
     setCode(["", "", "", "", "", ""]);
@@ -75,6 +118,148 @@ export function AuthScreen({ mode }: AuthScreenProps) {
     setTimeout(() => {
       codeInputRefs.current[0]?.focus();
     }, 250);
+  };
+
+  const handleAuthPress = async () => {
+    if (isSubmitting) {
+      return;
+    }
+
+    const emailAddress = email.trim();
+
+    if (!emailAddress || (mode === "sign-up" && !password)) {
+      Alert.alert("Missing details", "Enter the details above to continue.");
+      return;
+    }
+
+    if (mode === "sign-up") {
+      const { error } = await signUp.password({
+        emailAddress,
+        password,
+      });
+
+      if (error) {
+        showAuthError("Couldn't create account", error);
+        return;
+      }
+
+      const { error: verificationError } =
+        await signUp.verifications.sendEmailCode();
+
+      if (verificationError) {
+        showAuthError("Couldn't send code", verificationError);
+        return;
+      }
+
+      openVerification();
+      return;
+    }
+
+    const { error } = await signIn.emailCode.sendCode({ emailAddress });
+
+    if (error) {
+      showAuthError("Couldn't sign in", error);
+      return;
+    }
+
+    openVerification();
+  };
+
+  const handleSocialPress = async (provider: SocialProvider) => {
+    if (isSubmitting) {
+      return;
+    }
+
+    setSocialLoading(provider.name);
+
+    try {
+      const { createdSessionId, setActive } = await startSSOFlow({
+        strategy: provider.strategy,
+        redirectUrl: Linking.createURL("oauth-callback"),
+      });
+
+      if (createdSessionId && setActive) {
+        await setActive({ session: createdSessionId });
+        goHome();
+        return;
+      }
+
+      Alert.alert(
+        "Sign in not completed",
+        `${provider.name} sign in did not return an active session. Check that this social connection is enabled in Clerk.`,
+      );
+    } catch (error) {
+      showAuthError(`Couldn't continue with ${provider.name}`, error);
+    } finally {
+      setSocialLoading(null);
+    }
+  };
+
+  const verifyCode = async (verificationCode: string) => {
+    if (isVerifying) {
+      return;
+    }
+
+    setIsVerifying(true);
+
+    try {
+      if (mode === "sign-up") {
+        const { error } = await signUp.verifications.verifyEmailCode({
+          code: verificationCode,
+        });
+
+        if (error) {
+          showAuthError("Invalid verification code", error);
+          return;
+        }
+
+        if (signUp.status === "complete") {
+          const { error: finalizeError } = await signUp.finalize();
+
+          if (finalizeError) {
+            showAuthError("Couldn't finish sign up", finalizeError);
+            return;
+          }
+
+          goHome();
+          return;
+        }
+
+        Alert.alert(
+          "More details needed",
+          "Clerk needs more information before this account can be completed.",
+        );
+        return;
+      }
+
+      const { error } = await signIn.emailCode.verifyCode({
+        code: verificationCode,
+      });
+
+      if (error) {
+        showAuthError("Invalid verification code", error);
+        return;
+      }
+
+      if (signIn.status === "complete") {
+        const { error: finalizeError } = await signIn.finalize();
+
+        if (finalizeError) {
+          showAuthError("Couldn't finish sign in", finalizeError);
+          return;
+        }
+
+        goHome();
+        return;
+      }
+
+      Alert.alert(
+        "More verification needed",
+        "Clerk needs another verification step before sign in can be completed.",
+      );
+    } finally {
+      setIsVerifying(false);
+    }
   };
 
   const handleCodeChange = (value: string, index: number) => {
@@ -88,7 +273,7 @@ export function AuthScreen({ mode }: AuthScreenProps) {
       setCode(nextCode);
 
       if (digits.length === 6) {
-        router.replace("/");
+        void verifyCode(digits);
       } else {
         codeInputRefs.current[digits.length]?.focus();
       }
@@ -105,7 +290,7 @@ export function AuthScreen({ mode }: AuthScreenProps) {
     }
 
     if (nextCode.every(Boolean)) {
-      router.replace("/");
+      void verifyCode(nextCode.join(""));
     }
   };
 
@@ -184,9 +369,11 @@ export function AuthScreen({ mode }: AuthScreenProps) {
             ) : null}
 
             <Pressable
-              onPress={openVerification}
+              disabled={isSubmitting}
+              onPress={handleAuthPress}
               style={({ pressed }) => [
                 styles.primaryButton,
+                isSubmitting && styles.disabled,
                 pressed && styles.pressed,
               ]}
             >
@@ -208,8 +395,11 @@ export function AuthScreen({ mode }: AuthScreenProps) {
             {socialProviders.map((provider) => (
               <Pressable
                 key={provider.name}
+                disabled={isSubmitting}
+                onPress={() => void handleSocialPress(provider)}
                 style={({ pressed }) => [
                   styles.socialButton,
+                  isSubmitting && styles.disabled,
                   pressed && styles.pressed,
                 ]}
               >
@@ -247,6 +437,8 @@ export function AuthScreen({ mode }: AuthScreenProps) {
               </Link>
             </View>
           </View>
+
+          {mode === "sign-up" ? <View nativeID="clerk-captcha" /> : null}
         </View>
       </ScrollView>
 
@@ -260,6 +452,20 @@ export function AuthScreen({ mode }: AuthScreenProps) {
       />
     </SafeAreaView>
   );
+}
+
+function getErrorMessage(error: unknown) {
+  if (typeof error === "object" && error !== null) {
+    if ("longMessage" in error && typeof error.longMessage === "string") {
+      return error.longMessage;
+    }
+
+    if ("message" in error && typeof error.message === "string") {
+      return error.message;
+    }
+  }
+
+  return "Please try again.";
 }
 
 type AuthTextFieldProps = {
@@ -416,6 +622,9 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.72,
+  },
+  disabled: {
+    opacity: 0.58,
   },
   primaryButton: {
     alignItems: "center",
