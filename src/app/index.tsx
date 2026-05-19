@@ -1,9 +1,10 @@
 import { useAuth } from "@clerk/expo";
-import { Link, Redirect } from "expo-router";
+import { Link, Redirect, useRouter } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
 export default function Index() {
   const { isLoaded, isSignedIn, signOut } = useAuth();
+  const router = useRouter();
 
   if (!isLoaded) {
     return null;
@@ -25,6 +26,12 @@ export default function Index() {
           <Text className="btn-label">Open Onboarding</Text>
         </Pressable>
       </Link>
+      <Pressable
+        onPress={() => router.push("/language-selection")}
+        className="btn-primary px-8 py-4"
+      >
+        <Text className="btn-label">Select Language</Text>
+      </Pressable>
       <Pressable onPress={handleSignOut} className="mt-4">
         <Text className="text-base font-medium text-lingua-purple">Sign Out</Text>
       </Pressable>
