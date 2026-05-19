@@ -137,3 +137,16 @@
   letter-spacing: 0;
   line-height: 22.4px;
 }
+
+@utility auth__field {
+  background-color: #ffffff;
+  border-color: #eff0f6;
+  border-radius: 20px;
+  border-width: 1px;
+  box-shadow: 0 8px 24px rgba(13, 19, 43, 0.04);
+}
+
+@utility auth__divider-line {
+  background-color: #e8eaf2;
+  height: 1px;
+}
