@@ -5,6 +5,11 @@ import type { LanguageId } from "@/types/learning";
 
 const LANGUAGE_STORAGE_KEY = "language-storage";
 
+const VALID_LANGUAGE_IDS: LanguageId[] = ["spanish", "french", "japanese", "korean", "german", "chinese"];
+
+const isValidLanguageId = (value: unknown): value is LanguageId =>
+  typeof value === "string" && (VALID_LANGUAGE_IDS as string[]).includes(value);
+
 const isAsyncStorageReady = () =>
   AsyncStorage != null &&
   typeof AsyncStorage.getItem === "function" &&
@@ -67,7 +72,7 @@ export const useLanguageStore = create<LanguageStore>((set) => ({
   hydrate: async () => {
     try {
       const storedLanguageId = await storage.getItem(LANGUAGE_STORAGE_KEY);
-      set({ selectedLanguageId: storedLanguageId as LanguageId | null, hasHydrated: true });
+      set({ selectedLanguageId: isValidLanguageId(storedLanguageId) ? storedLanguageId : null, hasHydrated: true });
     } catch {
       set({ hasHydrated: true });
     }
