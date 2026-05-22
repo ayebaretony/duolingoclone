@@ -552,7 +552,7 @@ posthog.register({
 
 The call above ensures that every event sent by the user will include `"icecream pref": "vanilla"` and `"team_id": 22`. This way, if you filtered events by property using `icecream_pref = vanilla`, it would display all events captured on that user after the `posthog.register` call, since they all include the specified Super Property.
 
-This does **not** set the user's properties. This only sets the properties for their events. To store person properties, see the [setting person properties section](#setting-user-properties).
+This does **not** set the user's properties. This only sets the properties for their events. To store person properties, see the [setting person properties section](#setting-person-properties).
 
 ### Removing stored super properties
 
@@ -569,52 +569,6 @@ posthog.unregister('icecream pref'),
 This will remove the super property and subsequent events will not include it.
 
 If you are doing this as part of a user logging out you can instead simply [`posthog.reset()`](#reset-after-logout) which takes care of clearing all stored Super Properties and more.
-
-## Opt out of data capture
-
-You can completely opt-out users from data capture. To do this, there are two options:
-
-1.  Opt users out by default by setting `opt_out_capturing_by_default` to `true` in your PostHog config:
-
-JavaScript
-
-PostHog AI
-
-```javascript
-posthog.init('<ph_project_token>', {
-    opt_out_capturing_by_default: true,
-});
-```
-
-2.  Opt users out on a per-person basis by calling `opt_out_capturing()`:
-
-JavaScript
-
-PostHog AI
-
-```javascript
-posthog.opt_out_capturing()
-```
-
-Similarly, you can opt users in:
-
-JavaScript
-
-PostHog AI
-
-```javascript
-posthog.opt_in_capturing()
-```
-
-To check if a user is opted out:
-
-JavaScript
-
-PostHog AI
-
-```javascript
-posthog.has_opted_out_capturing()
-```
 
 ## Flush
 
@@ -1109,7 +1063,7 @@ PostHog AI
 
 ```jsx
 <PostHogProvider
-    debug: {true}
+    debug={true}
     apiKey="<ph_project_token>"
     options={{
         host: "https://us.i.posthog.com",

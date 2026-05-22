@@ -135,7 +135,7 @@ export function AuthScreen({ mode }: AuthScreenProps) {
     }
 
     if (mode === "sign-up") {
-      posthog.capture("sign_up_submitted", { email: emailAddress });
+      posthog.capture("sign_up_submitted");
 
       const { error } = await signUp.password({
         emailAddress,
@@ -235,7 +235,7 @@ export function AuthScreen({ mode }: AuthScreenProps) {
               $set_once: { sign_up_date: new Date().toISOString() },
             });
           }
-          posthog.capture("sign_up_completed", { email: emailAddress });
+          posthog.capture("sign_up_completed");
 
           goHome();
           return;
@@ -265,13 +265,7 @@ export function AuthScreen({ mode }: AuthScreenProps) {
           return;
         }
 
-        const userId = signIn.createdSessionId;
-        if (userId) {
-          posthog.identify(userId, {
-            $set: { email: signIn.identifier },
-          });
-        }
-        posthog.capture("sign_in_completed", { email: signIn.identifier });
+        posthog.capture("sign_in_completed");
 
         goHome();
         return;
