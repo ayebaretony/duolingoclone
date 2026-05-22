@@ -44,9 +44,10 @@ export function BottomTabBar() {
   const pathname = usePathname() ?? "/home";
   const insets = useSafeAreaInsets();
 
+  const normalizedPath = pathname.startsWith("/lesson/") ? "/learn" : pathname.replace(/\?.*$/, "");
   const activeIndex = Math.max(
     0,
-    TABS.findIndex((tab) => tab.href === pathname.replace(/\?.*$/, ""))
+    TABS.findIndex((tab) => tab.href === normalizedPath)
   );
 
   const [containerWidth, setContainerWidth] = useState(0);

@@ -624,6 +624,1063 @@ export const lessons: Lesson[] = [
   },
 ];
 
+// ─── Spanish: additional lessons ─────────────────────────────────────────────
+
+const spanishAdditional: Lesson[] = [
+  {
+    id: "spanish-numbers",
+    unitId: "spanish-basics-1",
+    languageId: "spanish",
+    title: "Numbers",
+    description: "Count from one to ten in Spanish.",
+    order: 3,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "spanish-numbers-goal-1", title: "Count to ten", successCriteria: "Say uno through diez in the correct order." },
+    ],
+    vocabulary: [
+      { id: "spanish-vocab-uno", term: "uno", translation: "one", phoneticHint: "OO-noh", partOfSpeech: "noun", example: "Uno café, por favor.", exampleTranslation: "One coffee, please.", tags: ["number", "starter"] },
+      { id: "spanish-vocab-dos", term: "dos", translation: "two", phoneticHint: "dohs", partOfSpeech: "noun", example: "Dos libros.", exampleTranslation: "Two books.", tags: ["number", "starter"] },
+      { id: "spanish-vocab-tres", term: "tres", translation: "three", phoneticHint: "trehs", partOfSpeech: "noun", example: "Tres gatos.", exampleTranslation: "Three cats.", tags: ["number", "starter"] },
+    ],
+    phrases: [
+      { id: "spanish-phrase-count", phrase: "Uno, dos, tres.", translation: "One, two, three.", pronunciationTip: "Keep each syllable short and even.", useCase: "Counting out loud." },
+    ],
+    activities: [
+      { id: "spanish-numbers-act-1", type: "multiple-choice", prompt: "What does dos mean?", correctAnswer: "two", options: ["one", "two", "three", "four"], vocabularyId: "spanish-vocab-dos" },
+    ],
+    aiTeacherPrompt: {
+      persona: "An energetic Spanish tutor who makes numbers fun.",
+      voiceStyle: "Upbeat and rhythmic with a counting beat.",
+      lessonObjective: "Help the learner count from one to ten in Spanish.",
+      systemPrompt: "Teach a beginner Spanish numbers lesson. Count slowly, ask the learner to repeat each number.",
+      openingMessage: "¡Uno, dos, tres! Let's learn to count in Spanish together.",
+      correctionStyle: "Count along to help with rhythm before correcting.",
+      targetPhrases: ["uno", "dos", "tres", "cuatro", "cinco"],
+    },
+  },
+  {
+    id: "spanish-colors",
+    unitId: "spanish-basics-1",
+    languageId: "spanish",
+    title: "Colors",
+    description: "Learn the names of common colors in Spanish.",
+    order: 4,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "spanish-colors-goal-1", title: "Name five colors", successCriteria: "Correctly identify rojo, azul, verde, amarillo, and blanco." },
+    ],
+    vocabulary: [
+      { id: "spanish-vocab-rojo", term: "rojo", translation: "red", phoneticHint: "ROH-hoh", partOfSpeech: "adjective", example: "La rosa es roja.", exampleTranslation: "The rose is red.", tags: ["color", "starter"] },
+      { id: "spanish-vocab-azul", term: "azul", translation: "blue", phoneticHint: "ah-SOOL", partOfSpeech: "adjective", example: "El cielo es azul.", exampleTranslation: "The sky is blue.", tags: ["color", "starter"] },
+      { id: "spanish-vocab-verde", term: "verde", translation: "green", phoneticHint: "BEHR-deh", partOfSpeech: "adjective", example: "El árbol es verde.", exampleTranslation: "The tree is green.", tags: ["color", "starter"] },
+    ],
+    phrases: [
+      { id: "spanish-phrase-color", phrase: "¿De qué color es?", translation: "What color is it?", pronunciationTip: "Say qué quickly, stress the last syllable of color.", useCase: "Asking about the color of an object." },
+    ],
+    activities: [
+      { id: "spanish-colors-act-1", type: "multiple-choice", prompt: "What does azul mean?", correctAnswer: "blue", options: ["red", "blue", "green", "yellow"], vocabularyId: "spanish-vocab-azul" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A vivid Spanish teacher who uses visual descriptions.",
+      voiceStyle: "Clear, expressive, with gentle pauses after each color word.",
+      lessonObjective: "Teach the learner five common Spanish color words.",
+      systemPrompt: "Teach a beginner Spanish colors lesson. Name colors, give examples, and ask the learner to repeat.",
+      openingMessage: "¿Ves el cielo? Es azul. Let's learn colors in Spanish!",
+      correctionStyle: "Give a visual hint first, then correct pronunciation.",
+      targetPhrases: ["rojo", "azul", "verde", "amarillo", "blanco"],
+    },
+  },
+  {
+    id: "spanish-food",
+    unitId: "spanish-basics-1",
+    languageId: "spanish",
+    title: "Food & Drinks",
+    description: "Order food and drinks using simple Spanish phrases.",
+    order: 5,
+    mode: "phrases",
+    xpReward: 10,
+    estimatedMinutes: 6,
+    goals: [
+      { id: "spanish-food-goal-1", title: "Order a drink", successCriteria: "Use Un/Una + drink + por favor correctly." },
+    ],
+    vocabulary: [
+      { id: "spanish-vocab-agua", term: "agua", translation: "water", phoneticHint: "AH-gwah", partOfSpeech: "noun", example: "Un agua, por favor.", exampleTranslation: "A water, please.", tags: ["food", "starter"] },
+      { id: "spanish-vocab-pan", term: "pan", translation: "bread", phoneticHint: "pahn", partOfSpeech: "noun", example: "Quiero pan.", exampleTranslation: "I want bread.", tags: ["food", "starter"] },
+      { id: "spanish-vocab-leche", term: "leche", translation: "milk", phoneticHint: "LEH-cheh", partOfSpeech: "noun", example: "Un vaso de leche.", exampleTranslation: "A glass of milk.", tags: ["drink", "starter"] },
+    ],
+    phrases: [
+      { id: "spanish-phrase-order", phrase: "Un café, por favor.", translation: "A coffee, please.", pronunciationTip: "Stress fa in favor.", useCase: "Ordering a drink at a café." },
+    ],
+    activities: [
+      { id: "spanish-food-act-1", type: "translate", prompt: "Translate: Un agua, por favor.", answer: "A water, please.", acceptedAnswers: ["A water, please.", "One water, please."], phraseId: "spanish-phrase-order" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A friendly Spanish café server helping you order.",
+      voiceStyle: "Warm and helpful, with real-life ordering scenarios.",
+      lessonObjective: "Guide the learner to order food and drinks in Spanish.",
+      systemPrompt: "Role-play a café ordering scene. Model the phrases, then ask the learner to order something.",
+      openingMessage: "¡Bienvenido! What would you like to order? Let's practice in Spanish.",
+      correctionStyle: "Repeat the correct phrase naturally after any error.",
+      targetPhrases: ["Un café, por favor.", "Quiero agua.", "La cuenta, por favor."],
+    },
+  },
+  {
+    id: "spanish-family",
+    unitId: "spanish-basics-1",
+    languageId: "spanish",
+    title: "Family & Friends",
+    description: "Talk about family members in Spanish.",
+    order: 6,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "spanish-family-goal-1", title: "Name family members", successCriteria: "Identify madre, padre, hermano, and hermana correctly." },
+    ],
+    vocabulary: [
+      { id: "spanish-vocab-madre", term: "madre", translation: "mother", phoneticHint: "MAH-dreh", partOfSpeech: "noun", example: "Mi madre se llama Ana.", exampleTranslation: "My mother is called Ana.", tags: ["family", "starter"] },
+      { id: "spanish-vocab-padre", term: "padre", translation: "father", phoneticHint: "PAH-dreh", partOfSpeech: "noun", example: "Mi padre trabaja.", exampleTranslation: "My father works.", tags: ["family", "starter"] },
+      { id: "spanish-vocab-hermano", term: "hermano", translation: "brother", phoneticHint: "ehr-MAH-noh", partOfSpeech: "noun", example: "Tengo un hermano.", exampleTranslation: "I have a brother.", tags: ["family", "starter"] },
+    ],
+    phrases: [
+      { id: "spanish-phrase-family", phrase: "Mi familia es grande.", translation: "My family is big.", pronunciationTip: "Say familia with five syllables: fa-mi-li-a.", useCase: "Describing your family size." },
+    ],
+    activities: [
+      { id: "spanish-family-act-1", type: "phrase-match", prompt: "Match each Spanish word to English.", pairs: [{ source: "madre", target: "mother" }, { source: "padre", target: "father" }, { source: "hermano", target: "brother" }] },
+    ],
+    aiTeacherPrompt: {
+      persona: "A warm Spanish teacher who loves talking about family.",
+      voiceStyle: "Gentle and personal, with encouragement after each answer.",
+      lessonObjective: "Help the learner name common family members in Spanish.",
+      systemPrompt: "Teach family vocabulary in Spanish. Ask the learner to describe their own family using the target words.",
+      openingMessage: "¿Tienes hermanos? Let's talk about family in Spanish.",
+      correctionStyle: "Affirm what was right before correcting the error.",
+      targetPhrases: ["mi madre", "mi padre", "mi hermano", "mi hermana"],
+    },
+  },
+];
+
+// ─── French: additional lessons ──────────────────────────────────────────────
+
+const frenchAdditional: Lesson[] = [
+  {
+    id: "french-numbers",
+    unitId: "french-basics-1",
+    languageId: "french",
+    title: "Les Nombres",
+    description: "Count from one to ten in French.",
+    order: 3,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "french-numbers-goal-1", title: "Count to ten", successCriteria: "Say un through dix in order." },
+    ],
+    vocabulary: [
+      { id: "french-vocab-un", term: "un", translation: "one", phoneticHint: "uhn", partOfSpeech: "noun", example: "Un café.", exampleTranslation: "One coffee.", tags: ["number", "starter"] },
+      { id: "french-vocab-deux", term: "deux", translation: "two", phoneticHint: "duh", partOfSpeech: "noun", example: "Deux livres.", exampleTranslation: "Two books.", tags: ["number", "starter"] },
+      { id: "french-vocab-trois", term: "trois", translation: "three", phoneticHint: "twah", partOfSpeech: "noun", example: "Trois chats.", exampleTranslation: "Three cats.", tags: ["number", "starter"] },
+    ],
+    phrases: [
+      { id: "french-phrase-count", phrase: "Un, deux, trois.", translation: "One, two, three.", pronunciationTip: "The final consonants are mostly silent.", useCase: "Counting aloud in French." },
+    ],
+    activities: [
+      { id: "french-numbers-act-1", type: "multiple-choice", prompt: "What does deux mean?", correctAnswer: "two", options: ["one", "two", "three", "four"], vocabularyId: "french-vocab-deux" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A precise French tutor who counts with rhythm.",
+      voiceStyle: "Clear and rhythmic, stressing each number cleanly.",
+      lessonObjective: "Help the learner count from one to ten in French.",
+      systemPrompt: "Teach beginner French numbers. Count together, correct silent letters gently.",
+      openingMessage: "Un, deux, trois — allons-y! Let's count in French.",
+      correctionStyle: "Model the correct sound first, then ask the learner to repeat.",
+      targetPhrases: ["un", "deux", "trois", "quatre", "cinq"],
+    },
+  },
+  {
+    id: "french-colors",
+    unitId: "french-basics-1",
+    languageId: "french",
+    title: "Les Couleurs",
+    description: "Name common colors in French.",
+    order: 4,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "french-colors-goal-1", title: "Name five colors", successCriteria: "Correctly identify rouge, bleu, vert, jaune, and blanc." },
+    ],
+    vocabulary: [
+      { id: "french-vocab-rouge", term: "rouge", translation: "red", phoneticHint: "roozh", partOfSpeech: "adjective", example: "La rose est rouge.", exampleTranslation: "The rose is red.", tags: ["color", "starter"] },
+      { id: "french-vocab-bleu", term: "bleu", translation: "blue", phoneticHint: "bluh", partOfSpeech: "adjective", example: "Le ciel est bleu.", exampleTranslation: "The sky is blue.", tags: ["color", "starter"] },
+      { id: "french-vocab-vert", term: "vert", translation: "green", phoneticHint: "vehr", partOfSpeech: "adjective", example: "L'arbre est vert.", exampleTranslation: "The tree is green.", tags: ["color", "starter"] },
+    ],
+    phrases: [
+      { id: "french-phrase-color", phrase: "C'est de quelle couleur?", translation: "What color is it?", pronunciationTip: "The t in c'est is silent.", useCase: "Asking about an object's color." },
+    ],
+    activities: [
+      { id: "french-colors-act-1", type: "multiple-choice", prompt: "What does rouge mean?", correctAnswer: "red", options: ["red", "blue", "green", "yellow"], vocabularyId: "french-vocab-rouge" },
+    ],
+    aiTeacherPrompt: {
+      persona: "An expressive French teacher who paints with words.",
+      voiceStyle: "Descriptive and clear with natural pauses for repetition.",
+      lessonObjective: "Teach the learner five French color words.",
+      systemPrompt: "Teach French colors with visual examples. Model each word and ask the learner to repeat.",
+      openingMessage: "Regarde! Le ciel est bleu. Let's explore colors in French.",
+      correctionStyle: "Describe what was almost right, then give the full correct word.",
+      targetPhrases: ["rouge", "bleu", "vert", "jaune", "blanc"],
+    },
+  },
+  {
+    id: "french-food",
+    unitId: "french-basics-1",
+    languageId: "french",
+    title: "La Nourriture",
+    description: "Order food and drinks at a French café.",
+    order: 5,
+    mode: "phrases",
+    xpReward: 10,
+    estimatedMinutes: 6,
+    goals: [
+      { id: "french-food-goal-1", title: "Order at a café", successCriteria: "Use Un/Une + item + s'il vous plaît correctly." },
+    ],
+    vocabulary: [
+      { id: "french-vocab-eau", term: "eau", translation: "water", phoneticHint: "oh", partOfSpeech: "noun", example: "Une eau, s'il vous plaît.", exampleTranslation: "A water, please.", tags: ["drink", "starter"] },
+      { id: "french-vocab-pain", term: "pain", translation: "bread", phoneticHint: "pan", partOfSpeech: "noun", example: "Du pain, s'il vous plaît.", exampleTranslation: "Some bread, please.", tags: ["food", "starter"] },
+      { id: "french-vocab-cafe", term: "café", translation: "coffee", phoneticHint: "kah-FAY", partOfSpeech: "noun", example: "Un café, s'il vous plaît.", exampleTranslation: "A coffee, please.", tags: ["drink", "starter"] },
+    ],
+    phrases: [
+      { id: "french-phrase-order", phrase: "Un café, s'il vous plaît.", translation: "A coffee, please.", pronunciationTip: "Link vous and plaît smoothly.", useCase: "Ordering politely at a French café." },
+    ],
+    activities: [
+      { id: "french-food-act-1", type: "translate", prompt: "Translate: Un café, s'il vous plaît.", answer: "A coffee, please.", acceptedAnswers: ["A coffee, please.", "One coffee, please."], phraseId: "french-phrase-order" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A charming Parisian waiter helping you order.",
+      voiceStyle: "Polished and helpful, with real café ordering scenarios.",
+      lessonObjective: "Help the learner order food and drinks in French.",
+      systemPrompt: "Role-play a café ordering scene in French. Model polite ordering phrases and invite the learner to order.",
+      openingMessage: "Bienvenue! Qu'est-ce que vous désirez? Let's order in French.",
+      correctionStyle: "Repeat the correct phrase naturally as confirmation after an error.",
+      targetPhrases: ["Un café, s'il vous plaît.", "De l'eau, s'il vous plaît.", "L'addition, s'il vous plaît."],
+    },
+  },
+  {
+    id: "french-family",
+    unitId: "french-basics-1",
+    languageId: "french",
+    title: "La Famille",
+    description: "Talk about family members in French.",
+    order: 6,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "french-family-goal-1", title: "Name family members", successCriteria: "Identify mère, père, frère, and sœur correctly." },
+    ],
+    vocabulary: [
+      { id: "french-vocab-mere", term: "mère", translation: "mother", phoneticHint: "mehr", partOfSpeech: "noun", example: "Ma mère s'appelle Claire.", exampleTranslation: "My mother is called Claire.", tags: ["family", "starter"] },
+      { id: "french-vocab-pere", term: "père", translation: "father", phoneticHint: "pehr", partOfSpeech: "noun", example: "Mon père travaille.", exampleTranslation: "My father works.", tags: ["family", "starter"] },
+      { id: "french-vocab-frere", term: "frère", translation: "brother", phoneticHint: "frehr", partOfSpeech: "noun", example: "J'ai un frère.", exampleTranslation: "I have a brother.", tags: ["family", "starter"] },
+    ],
+    phrases: [
+      { id: "french-phrase-family", phrase: "Ma famille est grande.", translation: "My family is big.", pronunciationTip: "The e in grande is almost silent.", useCase: "Describing your family." },
+    ],
+    activities: [
+      { id: "french-family-act-1", type: "phrase-match", prompt: "Match each French word to English.", pairs: [{ source: "mère", target: "mother" }, { source: "père", target: "father" }, { source: "frère", target: "brother" }] },
+    ],
+    aiTeacherPrompt: {
+      persona: "A warm French teacher who enjoys family conversations.",
+      voiceStyle: "Friendly and encouraging with natural sentence models.",
+      lessonObjective: "Help the learner name common family members in French.",
+      systemPrompt: "Teach French family vocabulary. Ask the learner to describe their family using the target words.",
+      openingMessage: "Parle-moi de ta famille! Let's discuss family in French.",
+      correctionStyle: "Confirm the right part of the answer before gently correcting the rest.",
+      targetPhrases: ["ma mère", "mon père", "mon frère", "ma sœur"],
+    },
+  },
+];
+
+// ─── Japanese: additional lessons ────────────────────────────────────────────
+
+const japaneseAdditional: Lesson[] = [
+  {
+    id: "japanese-numbers",
+    unitId: "japanese-basics-1",
+    languageId: "japanese",
+    title: "Numbers",
+    description: "Count from one to ten in Japanese.",
+    order: 3,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "japanese-numbers-goal-1", title: "Count to ten", successCriteria: "Say ichi through juu in order." },
+    ],
+    vocabulary: [
+      { id: "japanese-vocab-ichi", term: "一", translation: "one", transliteration: "ichi", phoneticHint: "ee-chee", partOfSpeech: "noun", example: "一つ。", exampleTranslation: "One.", tags: ["number", "starter"] },
+      { id: "japanese-vocab-ni", term: "二", translation: "two", transliteration: "ni", phoneticHint: "nee", partOfSpeech: "noun", example: "二つ。", exampleTranslation: "Two.", tags: ["number", "starter"] },
+      { id: "japanese-vocab-san", term: "三", translation: "three", transliteration: "san", phoneticHint: "sahn", partOfSpeech: "noun", example: "三つ。", exampleTranslation: "Three.", tags: ["number", "starter"] },
+    ],
+    phrases: [
+      { id: "japanese-phrase-count", phrase: "一、二、三。", translation: "One, two, three.", transliteration: "Ichi, ni, san.", pronunciationTip: "Keep each syllable short and even.", useCase: "Counting out loud in Japanese." },
+    ],
+    activities: [
+      { id: "japanese-numbers-act-1", type: "multiple-choice", prompt: "What does 二 (ni) mean?", correctAnswer: "two", options: ["one", "two", "three", "four"], vocabularyId: "japanese-vocab-ni" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A patient Japanese teacher who counts with clear rhythm.",
+      voiceStyle: "Slow and even, with romanization support after each number.",
+      lessonObjective: "Help the learner count from one to ten in Japanese.",
+      systemPrompt: "Teach beginner Japanese numbers. Count together slowly, using romanization as support.",
+      openingMessage: "一、二、三 — let's count together in Japanese!",
+      correctionStyle: "Say the correct number twice before asking the learner to try again.",
+      targetPhrases: ["一 (ichi)", "二 (ni)", "三 (san)", "四 (shi)", "五 (go)"],
+    },
+  },
+  {
+    id: "japanese-colors",
+    unitId: "japanese-basics-1",
+    languageId: "japanese",
+    title: "Colors",
+    description: "Learn basic color words in Japanese.",
+    order: 4,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "japanese-colors-goal-1", title: "Name five colors", successCriteria: "Correctly identify aka, ao, midori, ki, and shiro." },
+    ],
+    vocabulary: [
+      { id: "japanese-vocab-aka", term: "赤", translation: "red", transliteration: "aka", phoneticHint: "ah-kah", partOfSpeech: "noun", example: "赤いりんご。", exampleTranslation: "A red apple.", tags: ["color", "starter"] },
+      { id: "japanese-vocab-ao", term: "青", translation: "blue", transliteration: "ao", phoneticHint: "ah-oh", partOfSpeech: "noun", example: "青い空。", exampleTranslation: "Blue sky.", tags: ["color", "starter"] },
+      { id: "japanese-vocab-midori", term: "緑", translation: "green", transliteration: "midori", phoneticHint: "mee-doh-ree", partOfSpeech: "noun", example: "緑の木。", exampleTranslation: "A green tree.", tags: ["color", "starter"] },
+    ],
+    phrases: [
+      { id: "japanese-phrase-color", phrase: "何色ですか？", translation: "What color is it?", transliteration: "Nani iro desu ka?", pronunciationTip: "Keep iro and desu light and quick.", useCase: "Asking about the color of something." },
+    ],
+    activities: [
+      { id: "japanese-colors-act-1", type: "multiple-choice", prompt: "What does 青 (ao) mean?", correctAnswer: "blue", options: ["red", "blue", "green", "yellow"], vocabularyId: "japanese-vocab-ao" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A visual Japanese teacher who connects colors to everyday objects.",
+      voiceStyle: "Calm and descriptive with natural pauses for repetition.",
+      lessonObjective: "Teach the learner five basic Japanese color words.",
+      systemPrompt: "Teach Japanese colors with object examples. Give romanization and ask the learner to repeat.",
+      openingMessage: "空は何色ですか？ Let's learn colors in Japanese!",
+      correctionStyle: "Offer a visual memory tip before correcting pronunciation.",
+      targetPhrases: ["赤 (aka)", "青 (ao)", "緑 (midori)", "黄 (ki)", "白 (shiro)"],
+    },
+  },
+  {
+    id: "japanese-food",
+    unitId: "japanese-basics-1",
+    languageId: "japanese",
+    title: "Food & Drinks",
+    description: "Order food and drinks in Japanese.",
+    order: 5,
+    mode: "phrases",
+    xpReward: 10,
+    estimatedMinutes: 6,
+    goals: [
+      { id: "japanese-food-goal-1", title: "Order a dish", successCriteria: "Use item + wo kudasai correctly." },
+    ],
+    vocabulary: [
+      { id: "japanese-vocab-mizu", term: "水", translation: "water", transliteration: "mizu", phoneticHint: "mee-zoo", partOfSpeech: "noun", example: "水をください。", exampleTranslation: "Water, please.", tags: ["drink", "starter"] },
+      { id: "japanese-vocab-gohan", term: "ご飯", translation: "rice / meal", transliteration: "gohan", phoneticHint: "go-hahn", partOfSpeech: "noun", example: "ご飯をください。", exampleTranslation: "Rice, please.", tags: ["food", "starter"] },
+      { id: "japanese-vocab-ocha", term: "お茶", translation: "green tea", transliteration: "ocha", phoneticHint: "oh-chah", partOfSpeech: "noun", example: "お茶をください。", exampleTranslation: "Green tea, please.", tags: ["drink", "starter"] },
+    ],
+    phrases: [
+      { id: "japanese-phrase-order", phrase: "水をください。", translation: "Water, please.", transliteration: "Mizu wo kudasai.", pronunciationTip: "Keep wo light and unstressed.", useCase: "Politely requesting water at a restaurant." },
+    ],
+    activities: [
+      { id: "japanese-food-act-1", type: "translate", prompt: "Translate: 水をください。", answer: "Water, please.", acceptedAnswers: ["Water, please.", "Please give me water."], phraseId: "japanese-phrase-order" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A helpful Japanese restaurant guide.",
+      voiceStyle: "Polite and clear, modeling each phrase slowly with romanization.",
+      lessonObjective: "Help the learner order food and drinks in Japanese.",
+      systemPrompt: "Role-play a restaurant scene in Japanese. Model ordering phrases and invite the learner to order something.",
+      openingMessage: "いらっしゃいませ! Let's learn to order food in Japanese.",
+      correctionStyle: "Model the full correct phrase before asking the learner to try again.",
+      targetPhrases: ["水をください。", "ご飯をください。", "お茶をください。"],
+    },
+  },
+  {
+    id: "japanese-family",
+    unitId: "japanese-basics-1",
+    languageId: "japanese",
+    title: "Family & Home",
+    description: "Talk about your family in Japanese.",
+    order: 6,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "japanese-family-goal-1", title: "Name family members", successCriteria: "Identify okāsan, otōsan, and ani correctly." },
+    ],
+    vocabulary: [
+      { id: "japanese-vocab-okaasan", term: "お母さん", translation: "mother", transliteration: "okāsan", phoneticHint: "oh-kah-sahn", partOfSpeech: "noun", example: "お母さんは先生です。", exampleTranslation: "My mother is a teacher.", tags: ["family", "starter"] },
+      { id: "japanese-vocab-otousan", term: "お父さん", translation: "father", transliteration: "otōsan", phoneticHint: "oh-toh-sahn", partOfSpeech: "noun", example: "お父さんは医者です。", exampleTranslation: "My father is a doctor.", tags: ["family", "starter"] },
+      { id: "japanese-vocab-ani", term: "兄", translation: "older brother", transliteration: "ani", phoneticHint: "ah-nee", partOfSpeech: "noun", example: "兄がいます。", exampleTranslation: "I have an older brother.", tags: ["family", "starter"] },
+    ],
+    phrases: [
+      { id: "japanese-phrase-family", phrase: "家族は四人です。", translation: "My family has four people.", transliteration: "Kazoku wa yo-nin desu.", pronunciationTip: "Yo-nin means four people — nin is the counter.", useCase: "Describing the size of your family." },
+    ],
+    activities: [
+      { id: "japanese-family-act-1", type: "phrase-match", prompt: "Match each Japanese word to English.", pairs: [{ source: "お母さん", target: "mother" }, { source: "お父さん", target: "father" }, { source: "兄", target: "older brother" }] },
+    ],
+    aiTeacherPrompt: {
+      persona: "A supportive Japanese teacher who loves discussing family.",
+      voiceStyle: "Gentle and slow, with romanization after each Japanese term.",
+      lessonObjective: "Help the learner name family members in Japanese.",
+      systemPrompt: "Teach Japanese family vocabulary. Ask the learner to describe their own family using target words.",
+      openingMessage: "家族について話しましょう！ Let's talk about family in Japanese.",
+      correctionStyle: "Repeat the correct term with romanization before asking the learner to try again.",
+      targetPhrases: ["お母さん (okāsan)", "お父さん (otōsan)", "兄 (ani)", "姉 (ane)"],
+    },
+  },
+];
+
+// ─── Korean: full unit ────────────────────────────────────────────────────────
+
+const koreanLessons: Lesson[] = [
+  {
+    id: "korean-greetings",
+    unitId: "korean-basics-1",
+    languageId: "korean",
+    title: "Greetings",
+    description: "Learn hello, thank you, and goodbye in Korean.",
+    order: 1,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 4,
+    goals: [
+      { id: "korean-greetings-goal-1", title: "Recognize starter phrases", successCriteria: "Match 안녕하세요, 감사합니다, and 안녕히 가세요 to English." },
+    ],
+    vocabulary: [
+      { id: "korean-vocab-annyeong", term: "안녕하세요", translation: "hello", phoneticHint: "ahn-nyong-ha-seh-yo", partOfSpeech: "phrase", example: "안녕하세요, 선생님.", exampleTranslation: "Hello, teacher.", tags: ["greeting", "starter"] },
+      { id: "korean-vocab-gamsahamnida", term: "감사합니다", translation: "thank you", phoneticHint: "gam-sa-ham-ni-da", partOfSpeech: "phrase", example: "감사합니다.", exampleTranslation: "Thank you.", tags: ["polite", "starter"] },
+      { id: "korean-vocab-annyeonghigaseyo", term: "안녕히 가세요", translation: "goodbye", phoneticHint: "ahn-nyong-hee ga-seh-yo", partOfSpeech: "phrase", example: "안녕히 가세요!", exampleTranslation: "Goodbye!", tags: ["goodbye", "starter"] },
+    ],
+    phrases: [
+      { id: "korean-phrase-hello", phrase: "안녕하세요", translation: "Hello", pronunciationTip: "The double n creates a gentle nasal sound.", useCase: "Greeting someone politely." },
+    ],
+    activities: [
+      { id: "korean-greetings-act-1", type: "multiple-choice", prompt: "What does 감사합니다 mean?", correctAnswer: "thank you", options: ["thank you", "hello", "goodbye", "yes"], vocabularyId: "korean-vocab-gamsahamnida" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A kind Korean teacher for absolute beginners.",
+      voiceStyle: "Clear, slow, and encouraging with phonetic support.",
+      lessonObjective: "Teach the learner to greet and thank someone in Korean.",
+      systemPrompt: "Teach a beginner Korean greeting lesson. Model each phrase, give phonetic hints, and invite repetition.",
+      openingMessage: "안녕하세요! We'll learn three essential Korean phrases today.",
+      correctionStyle: "Give a phonetic breakdown before the corrected phrase.",
+      targetPhrases: ["안녕하세요", "감사합니다", "안녕히 가세요"],
+    },
+  },
+  {
+    id: "korean-introductions",
+    unitId: "korean-basics-1",
+    languageId: "korean",
+    title: "Introductions",
+    description: "Say your name and ask how someone is in Korean.",
+    order: 2,
+    mode: "phrases",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "korean-intro-goal-1", title: "Say your name", successCriteria: "Use 저는 ... 이에요/예요 correctly." },
+    ],
+    vocabulary: [
+      { id: "korean-vocab-jeo", term: "저는", translation: "I am (formal)", phoneticHint: "jeo-neun", partOfSpeech: "pronoun", example: "저는 민수예요.", exampleTranslation: "I am Minsoo.", tags: ["introduction", "starter"] },
+      { id: "korean-vocab-ireum", term: "이름", translation: "name", phoneticHint: "ee-reum", partOfSpeech: "noun", example: "이름이 뭐예요?", exampleTranslation: "What is your name?", tags: ["introduction", "starter"] },
+    ],
+    phrases: [
+      { id: "korean-phrase-name", phrase: "저는 민수예요.", translation: "I am Minsoo.", pronunciationTip: "예요 is used after vowels, 이에요 after consonants.", useCase: "Introducing your name formally." },
+    ],
+    activities: [
+      { id: "korean-intro-act-1", type: "translate", prompt: "Translate: 저는 민수예요.", answer: "I am Minsoo.", acceptedAnswers: ["I am Minsoo.", "My name is Minsoo."], phraseId: "korean-phrase-name" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A patient Korean conversation coach.",
+      voiceStyle: "Friendly and clear with beginner-paced Korean.",
+      lessonObjective: "Guide the learner through a short name exchange in Korean.",
+      systemPrompt: "Run a two-minute spoken Korean introduction practice. Model the phrase and ask the learner to try with their own name.",
+      openingMessage: "안녕하세요! Let's practice introducing ourselves in Korean.",
+      correctionStyle: "Correct the particle (이에요/예요) choice gently with an explanation.",
+      targetPhrases: ["저는 ... 이에요.", "이름이 뭐예요?"],
+    },
+  },
+  {
+    id: "korean-numbers",
+    unitId: "korean-basics-1",
+    languageId: "korean",
+    title: "Numbers",
+    description: "Count from one to ten in Korean.",
+    order: 3,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "korean-numbers-goal-1", title: "Count to five", successCriteria: "Say 일 through 오 in order." },
+    ],
+    vocabulary: [
+      { id: "korean-vocab-il", term: "일", translation: "one", phoneticHint: "eel", partOfSpeech: "noun", example: "일 개.", exampleTranslation: "One piece.", tags: ["number", "starter"] },
+      { id: "korean-vocab-i", term: "이", translation: "two", phoneticHint: "ee", partOfSpeech: "noun", example: "이 명.", exampleTranslation: "Two people.", tags: ["number", "starter"] },
+      { id: "korean-vocab-sam", term: "삼", translation: "three", phoneticHint: "sahm", partOfSpeech: "noun", example: "삼 개.", exampleTranslation: "Three pieces.", tags: ["number", "starter"] },
+    ],
+    phrases: [
+      { id: "korean-phrase-count", phrase: "일, 이, 삼.", translation: "One, two, three.", pronunciationTip: "Each syllable is short and clipped.", useCase: "Counting in Korean." },
+    ],
+    activities: [
+      { id: "korean-numbers-act-1", type: "multiple-choice", prompt: "What does 이 mean?", correctAnswer: "two", options: ["one", "two", "three", "four"], vocabularyId: "korean-vocab-i" },
+    ],
+    aiTeacherPrompt: {
+      persona: "An energetic Korean tutor who counts with rhythm.",
+      voiceStyle: "Upbeat and clear with even pronunciation pace.",
+      lessonObjective: "Help the learner count from one to ten in Korean (Sino-Korean).",
+      systemPrompt: "Teach Sino-Korean numbers (일, 이, 삼...). Count together and drill with simple questions.",
+      openingMessage: "일, 이, 삼 — let's count in Korean!",
+      correctionStyle: "Repeat the correct number twice before asking the learner to try.",
+      targetPhrases: ["일", "이", "삼", "사", "오"],
+    },
+  },
+  {
+    id: "korean-food",
+    unitId: "korean-basics-1",
+    languageId: "korean",
+    title: "Food & Drinks",
+    description: "Order food and drinks in Korean.",
+    order: 4,
+    mode: "phrases",
+    xpReward: 10,
+    estimatedMinutes: 6,
+    goals: [
+      { id: "korean-food-goal-1", title: "Order a dish", successCriteria: "Use 주세요 to order something politely." },
+    ],
+    vocabulary: [
+      { id: "korean-vocab-mul", term: "물", translation: "water", phoneticHint: "mul", partOfSpeech: "noun", example: "물 주세요.", exampleTranslation: "Water, please.", tags: ["drink", "starter"] },
+      { id: "korean-vocab-bap", term: "밥", translation: "rice / meal", phoneticHint: "bap", partOfSpeech: "noun", example: "밥 주세요.", exampleTranslation: "Rice, please.", tags: ["food", "starter"] },
+      { id: "korean-vocab-kimchi", term: "김치", translation: "kimchi", phoneticHint: "gim-chee", partOfSpeech: "noun", example: "김치 주세요.", exampleTranslation: "Kimchi, please.", tags: ["food", "starter"] },
+    ],
+    phrases: [
+      { id: "korean-phrase-order", phrase: "물 주세요.", translation: "Water, please.", pronunciationTip: "주세요 (juseyo) is the polite request form.", useCase: "Politely requesting water at a restaurant." },
+    ],
+    activities: [
+      { id: "korean-food-act-1", type: "translate", prompt: "Translate: 물 주세요.", answer: "Water, please.", acceptedAnswers: ["Water, please.", "Please give me water."], phraseId: "korean-phrase-order" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A helpful Korean restaurant guide.",
+      voiceStyle: "Warm and practical with real ordering scenarios.",
+      lessonObjective: "Help the learner order food and drinks in Korean.",
+      systemPrompt: "Role-play a Korean restaurant scene. Model 주세요 ordering phrases and ask the learner to order.",
+      openingMessage: "어서 오세요! Let's learn to order in Korean.",
+      correctionStyle: "Model the full phrase naturally before asking the learner to repeat.",
+      targetPhrases: ["물 주세요.", "밥 주세요.", "계산서 주세요."],
+    },
+  },
+  {
+    id: "korean-colors",
+    unitId: "korean-basics-1",
+    languageId: "korean",
+    title: "Colors",
+    description: "Name common colors in Korean.",
+    order: 5,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "korean-colors-goal-1", title: "Name five colors", successCriteria: "Correctly identify 빨강, 파랑, 초록, 노랑, and 흰색." },
+    ],
+    vocabulary: [
+      { id: "korean-vocab-ppalkang", term: "빨강", translation: "red", phoneticHint: "ppal-gang", partOfSpeech: "noun", example: "빨간 사과.", exampleTranslation: "A red apple.", tags: ["color", "starter"] },
+      { id: "korean-vocab-parang", term: "파랑", translation: "blue", phoneticHint: "pa-rang", partOfSpeech: "noun", example: "파란 하늘.", exampleTranslation: "Blue sky.", tags: ["color", "starter"] },
+      { id: "korean-vocab-chorok", term: "초록", translation: "green", phoneticHint: "cho-rok", partOfSpeech: "noun", example: "초록 나무.", exampleTranslation: "A green tree.", tags: ["color", "starter"] },
+    ],
+    phrases: [
+      { id: "korean-phrase-color", phrase: "무슨 색이에요?", translation: "What color is it?", pronunciationTip: "무슨 (museun) means what kind of.", useCase: "Asking about an object's color." },
+    ],
+    activities: [
+      { id: "korean-colors-act-1", type: "multiple-choice", prompt: "What does 파랑 mean?", correctAnswer: "blue", options: ["red", "blue", "green", "yellow"], vocabularyId: "korean-vocab-parang" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A visual Korean teacher who links colors to everyday objects.",
+      voiceStyle: "Clear and expressive with descriptive examples.",
+      lessonObjective: "Teach the learner five common Korean color words.",
+      systemPrompt: "Teach Korean colors with real object examples. Model each word and ask the learner to repeat.",
+      openingMessage: "하늘은 무슨 색이에요? It's 파랑! Let's learn colors in Korean.",
+      correctionStyle: "Give a visual association before correcting pronunciation.",
+      targetPhrases: ["빨강", "파랑", "초록", "노랑", "흰색"],
+    },
+  },
+  {
+    id: "korean-family",
+    unitId: "korean-basics-1",
+    languageId: "korean",
+    title: "Family & Friends",
+    description: "Talk about family members in Korean.",
+    order: 6,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "korean-family-goal-1", title: "Name family members", successCriteria: "Identify 어머니, 아버지, and 오빠/형 correctly." },
+    ],
+    vocabulary: [
+      { id: "korean-vocab-eomeoni", term: "어머니", translation: "mother", phoneticHint: "eo-meo-ni", partOfSpeech: "noun", example: "어머니, 안녕하세요.", exampleTranslation: "Hello, mother.", tags: ["family", "starter"] },
+      { id: "korean-vocab-abeoji", term: "아버지", translation: "father", phoneticHint: "a-beo-ji", partOfSpeech: "noun", example: "아버지가 오셨어요.", exampleTranslation: "Father has arrived.", tags: ["family", "starter"] },
+      { id: "korean-vocab-oppa", term: "오빠", translation: "older brother (female speaker)", phoneticHint: "op-pa", partOfSpeech: "noun", example: "오빠, 밥 먹었어요?", exampleTranslation: "Did you eat, older brother?", tags: ["family", "starter"] },
+    ],
+    phrases: [
+      { id: "korean-phrase-family", phrase: "저는 외동이에요.", translation: "I am an only child.", pronunciationTip: "외동 (wae-dong) means only child.", useCase: "Describing your family structure." },
+    ],
+    activities: [
+      { id: "korean-family-act-1", type: "phrase-match", prompt: "Match each Korean word to English.", pairs: [{ source: "어머니", target: "mother" }, { source: "아버지", target: "father" }, { source: "오빠", target: "older brother" }] },
+    ],
+    aiTeacherPrompt: {
+      persona: "A warm Korean teacher who explores family relationships.",
+      voiceStyle: "Gentle and personal with practical family sentences.",
+      lessonObjective: "Help the learner name common family members in Korean.",
+      systemPrompt: "Teach Korean family vocabulary. Ask the learner to describe their family using the target words.",
+      openingMessage: "가족에 대해 이야기해봐요! Let's talk about family in Korean.",
+      correctionStyle: "Affirm what was correct before gently correcting the rest.",
+      targetPhrases: ["어머니", "아버지", "오빠", "언니"],
+    },
+  },
+];
+
+// ─── German: full unit ────────────────────────────────────────────────────────
+
+const germanLessons: Lesson[] = [
+  {
+    id: "german-greetings",
+    unitId: "german-basics-1",
+    languageId: "german",
+    title: "Greetings",
+    description: "Learn hello, thank you, and goodbye in German.",
+    order: 1,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 4,
+    goals: [
+      { id: "german-greetings-goal-1", title: "Recognize starter phrases", successCriteria: "Match Hallo, Danke, and Tschüss to their meanings." },
+    ],
+    vocabulary: [
+      { id: "german-vocab-hallo", term: "Hallo", translation: "hello", phoneticHint: "HAH-loh", partOfSpeech: "phrase", example: "Hallo, Lukas.", exampleTranslation: "Hello, Lukas.", tags: ["greeting", "starter"] },
+      { id: "german-vocab-danke", term: "Danke", translation: "thank you", phoneticHint: "DAN-keh", partOfSpeech: "phrase", example: "Danke, Maria.", exampleTranslation: "Thank you, Maria.", tags: ["polite", "starter"] },
+      { id: "german-vocab-tschuess", term: "Tschüss", translation: "bye", phoneticHint: "chüss", partOfSpeech: "phrase", example: "Tschüss, bis morgen!", exampleTranslation: "Bye, see you tomorrow!", tags: ["goodbye", "starter"] },
+    ],
+    phrases: [
+      { id: "german-phrase-hallo", phrase: "Guten Tag", translation: "Good day", pronunciationTip: "The g in gut is hard, like in go.", useCase: "Polite daytime greeting." },
+    ],
+    activities: [
+      { id: "german-greetings-act-1", type: "multiple-choice", prompt: "What does Danke mean?", correctAnswer: "thank you", options: ["thank you", "hello", "goodbye", "please"], vocabularyId: "german-vocab-danke" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A friendly German teacher for total beginners.",
+      voiceStyle: "Clear and confident with crisp German pronunciation.",
+      lessonObjective: "Teach the learner to greet and thank someone in German.",
+      systemPrompt: "Teach a beginner German greeting lesson. Model each phrase, invite repetition, and correct gently.",
+      openingMessage: "Hallo! Willkommen! We'll learn three essential German phrases today.",
+      correctionStyle: "Emphasize the correct consonant sound before the full correction.",
+      targetPhrases: ["Hallo", "Guten Tag", "Danke", "Tschüss"],
+    },
+  },
+  {
+    id: "german-introductions",
+    unitId: "german-basics-1",
+    languageId: "german",
+    title: "Introductions",
+    description: "Introduce yourself and ask someone's name in German.",
+    order: 2,
+    mode: "phrases",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "german-intro-goal-1", title: "Say your name", successCriteria: "Use Ich heiße correctly." },
+    ],
+    vocabulary: [
+      { id: "german-vocab-heisse", term: "heiße", translation: "am called", phoneticHint: "HY-seh", partOfSpeech: "verb", example: "Ich heiße Max.", exampleTranslation: "My name is Max.", tags: ["introduction", "starter"] },
+      { id: "german-vocab-wie", term: "Wie", translation: "how", phoneticHint: "vee", partOfSpeech: "adverb", example: "Wie heißt du?", exampleTranslation: "What is your name?", tags: ["question", "starter"] },
+    ],
+    phrases: [
+      { id: "german-phrase-name", phrase: "Ich heiße Max.", translation: "My name is Max.", pronunciationTip: "The ß (eszett) sounds like ss.", useCase: "Introducing your name in German." },
+    ],
+    activities: [
+      { id: "german-intro-act-1", type: "translate", prompt: "Translate: Ich heiße Max.", answer: "My name is Max.", acceptedAnswers: ["My name is Max.", "I am Max.", "I'm Max."], phraseId: "german-phrase-name" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A patient German conversation coach.",
+      voiceStyle: "Precise, friendly, and beginner-paced.",
+      lessonObjective: "Guide the learner through a first-meeting introduction in German.",
+      systemPrompt: "Run a short German introduction practice. Model Ich heiße, ask the learner to introduce themselves.",
+      openingMessage: "Guten Tag! Ich heiße Klaus. Now you try — wie heißt du?",
+      correctionStyle: "Point out the correct verb ending before repeating the full phrase.",
+      targetPhrases: ["Ich heiße...", "Wie heißt du?"],
+    },
+  },
+  {
+    id: "german-numbers",
+    unitId: "german-basics-1",
+    languageId: "german",
+    title: "Numbers",
+    description: "Count from one to ten in German.",
+    order: 3,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "german-numbers-goal-1", title: "Count to ten", successCriteria: "Say eins through zehn in order." },
+    ],
+    vocabulary: [
+      { id: "german-vocab-eins", term: "eins", translation: "one", phoneticHint: "eyns", partOfSpeech: "noun", example: "Eins, zwei, drei.", exampleTranslation: "One, two, three.", tags: ["number", "starter"] },
+      { id: "german-vocab-zwei", term: "zwei", translation: "two", phoneticHint: "tsvye", partOfSpeech: "noun", example: "Zwei Äpfel.", exampleTranslation: "Two apples.", tags: ["number", "starter"] },
+      { id: "german-vocab-drei", term: "drei", translation: "three", phoneticHint: "dry", partOfSpeech: "noun", example: "Drei Bücher.", exampleTranslation: "Three books.", tags: ["number", "starter"] },
+    ],
+    phrases: [
+      { id: "german-phrase-count", phrase: "Eins, zwei, drei.", translation: "One, two, three.", pronunciationTip: "Zwei sounds like the English word try with a v.", useCase: "Counting aloud in German." },
+    ],
+    activities: [
+      { id: "german-numbers-act-1", type: "multiple-choice", prompt: "What does zwei mean?", correctAnswer: "two", options: ["one", "two", "three", "four"], vocabularyId: "german-vocab-zwei" },
+    ],
+    aiTeacherPrompt: {
+      persona: "An upbeat German tutor who counts with energy.",
+      voiceStyle: "Crisp and rhythmic, stressing each number clearly.",
+      lessonObjective: "Help the learner count from one to ten in German.",
+      systemPrompt: "Teach German numbers one through ten. Count together, drill with simple questions.",
+      openingMessage: "Eins, zwei, drei — los geht's! Let's count in German.",
+      correctionStyle: "Demonstrate the vowel sound before repeating the full number.",
+      targetPhrases: ["eins", "zwei", "drei", "vier", "fünf"],
+    },
+  },
+  {
+    id: "german-food",
+    unitId: "german-basics-1",
+    languageId: "german",
+    title: "Food & Drinks",
+    description: "Order food and drinks in German.",
+    order: 4,
+    mode: "phrases",
+    xpReward: 10,
+    estimatedMinutes: 6,
+    goals: [
+      { id: "german-food-goal-1", title: "Order a drink", successCriteria: "Use Ein/Eine + item + bitte correctly." },
+    ],
+    vocabulary: [
+      { id: "german-vocab-wasser", term: "Wasser", translation: "water", phoneticHint: "VAS-er", partOfSpeech: "noun", example: "Ein Wasser, bitte.", exampleTranslation: "A water, please.", tags: ["drink", "starter"] },
+      { id: "german-vocab-brot", term: "Brot", translation: "bread", phoneticHint: "broht", partOfSpeech: "noun", example: "Ein Brot, bitte.", exampleTranslation: "A bread, please.", tags: ["food", "starter"] },
+      { id: "german-vocab-kaffee", term: "Kaffee", translation: "coffee", phoneticHint: "KAF-ee", partOfSpeech: "noun", example: "Einen Kaffee, bitte.", exampleTranslation: "A coffee, please.", tags: ["drink", "starter"] },
+    ],
+    phrases: [
+      { id: "german-phrase-order", phrase: "Einen Kaffee, bitte.", translation: "A coffee, please.", pronunciationTip: "Bitte sounds like bit-teh.", useCase: "Ordering at a German café or restaurant." },
+    ],
+    activities: [
+      { id: "german-food-act-1", type: "translate", prompt: "Translate: Ein Wasser, bitte.", answer: "A water, please.", acceptedAnswers: ["A water, please.", "One water, please."], phraseId: "german-phrase-order" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A helpful German café host.",
+      voiceStyle: "Warm and practical with realistic ordering scenarios.",
+      lessonObjective: "Help the learner order food and drinks in German.",
+      systemPrompt: "Role-play a German café scene. Model bitte ordering phrases and ask the learner to order.",
+      openingMessage: "Willkommen im Café! Was möchten Sie? Let's order in German.",
+      correctionStyle: "Say the correct article (ein/eine/einen) before the full phrase.",
+      targetPhrases: ["Ein Wasser, bitte.", "Einen Kaffee, bitte.", "Die Rechnung, bitte."],
+    },
+  },
+  {
+    id: "german-colors",
+    unitId: "german-basics-1",
+    languageId: "german",
+    title: "Colors",
+    description: "Name common colors in German.",
+    order: 5,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "german-colors-goal-1", title: "Name five colors", successCriteria: "Correctly identify rot, blau, grün, gelb, and weiß." },
+    ],
+    vocabulary: [
+      { id: "german-vocab-rot", term: "rot", translation: "red", phoneticHint: "roht", partOfSpeech: "adjective", example: "Die Rose ist rot.", exampleTranslation: "The rose is red.", tags: ["color", "starter"] },
+      { id: "german-vocab-blau", term: "blau", translation: "blue", phoneticHint: "blau (rhymes with cow)", partOfSpeech: "adjective", example: "Der Himmel ist blau.", exampleTranslation: "The sky is blue.", tags: ["color", "starter"] },
+      { id: "german-vocab-gruen", term: "grün", translation: "green", phoneticHint: "grüün", partOfSpeech: "adjective", example: "Das Gras ist grün.", exampleTranslation: "The grass is green.", tags: ["color", "starter"] },
+    ],
+    phrases: [
+      { id: "german-phrase-color", phrase: "Welche Farbe ist das?", translation: "What color is that?", pronunciationTip: "Farbe has a light r and silent e at the end.", useCase: "Asking about an object's color." },
+    ],
+    activities: [
+      { id: "german-colors-act-1", type: "multiple-choice", prompt: "What does blau mean?", correctAnswer: "blue", options: ["red", "blue", "green", "yellow"], vocabularyId: "german-vocab-blau" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A creative German teacher who paints pictures with words.",
+      voiceStyle: "Expressive and visual with everyday color examples.",
+      lessonObjective: "Teach the learner five common German color words.",
+      systemPrompt: "Teach German colors with everyday examples. Model each word and invite repetition.",
+      openingMessage: "Ist der Himmel blau? Ja! Let's learn colors in German.",
+      correctionStyle: "Link the color to a memorable object before correcting.",
+      targetPhrases: ["rot", "blau", "grün", "gelb", "weiß"],
+    },
+  },
+  {
+    id: "german-family",
+    unitId: "german-basics-1",
+    languageId: "german",
+    title: "Family & Friends",
+    description: "Talk about family members in German.",
+    order: 6,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "german-family-goal-1", title: "Name family members", successCriteria: "Identify Mutter, Vater, and Bruder correctly." },
+    ],
+    vocabulary: [
+      { id: "german-vocab-mutter", term: "Mutter", translation: "mother", phoneticHint: "MUT-er", partOfSpeech: "noun", example: "Meine Mutter heißt Anna.", exampleTranslation: "My mother is called Anna.", tags: ["family", "starter"] },
+      { id: "german-vocab-vater", term: "Vater", translation: "father", phoneticHint: "FAH-ter", partOfSpeech: "noun", example: "Mein Vater arbeitet.", exampleTranslation: "My father works.", tags: ["family", "starter"] },
+      { id: "german-vocab-bruder", term: "Bruder", translation: "brother", phoneticHint: "BROO-der", partOfSpeech: "noun", example: "Ich habe einen Bruder.", exampleTranslation: "I have a brother.", tags: ["family", "starter"] },
+    ],
+    phrases: [
+      { id: "german-phrase-family", phrase: "Meine Familie ist groß.", translation: "My family is big.", pronunciationTip: "Groß has the ß = ss sound.", useCase: "Describing your family size." },
+    ],
+    activities: [
+      { id: "german-family-act-1", type: "phrase-match", prompt: "Match each German word to English.", pairs: [{ source: "Mutter", target: "mother" }, { source: "Vater", target: "father" }, { source: "Bruder", target: "brother" }] },
+    ],
+    aiTeacherPrompt: {
+      persona: "A warm German teacher who loves family conversations.",
+      voiceStyle: "Friendly and natural with real-life family sentences.",
+      lessonObjective: "Help the learner name common family members in German.",
+      systemPrompt: "Teach German family vocabulary. Ask the learner to talk about their own family using target words.",
+      openingMessage: "Erzähl mir von deiner Familie! Let's talk about family in German.",
+      correctionStyle: "Confirm the correct noun before gently addressing the article or gender.",
+      targetPhrases: ["meine Mutter", "mein Vater", "mein Bruder", "meine Schwester"],
+    },
+  },
+];
+
+// ─── Chinese: full unit ───────────────────────────────────────────────────────
+
+const chineseLessons: Lesson[] = [
+  {
+    id: "chinese-greetings",
+    unitId: "chinese-basics-1",
+    languageId: "chinese",
+    title: "Greetings",
+    description: "Learn hello, thank you, and goodbye in Mandarin.",
+    order: 1,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 4,
+    goals: [
+      { id: "chinese-greetings-goal-1", title: "Recognize starter phrases", successCriteria: "Match 你好, 谢谢, and 再见 to their meanings." },
+    ],
+    vocabulary: [
+      { id: "chinese-vocab-nihao", term: "你好", translation: "hello", phoneticHint: "nǐ hǎo", partOfSpeech: "phrase", example: "你好，老师。", exampleTranslation: "Hello, teacher.", tags: ["greeting", "starter"] },
+      { id: "chinese-vocab-xiexie", term: "谢谢", translation: "thank you", phoneticHint: "xiè xie", partOfSpeech: "phrase", example: "谢谢你。", exampleTranslation: "Thank you.", tags: ["polite", "starter"] },
+      { id: "chinese-vocab-zaijian", term: "再见", translation: "goodbye", phoneticHint: "zài jiàn", partOfSpeech: "phrase", example: "再见！", exampleTranslation: "Goodbye!", tags: ["goodbye", "starter"] },
+    ],
+    phrases: [
+      { id: "chinese-phrase-nihao", phrase: "你好", translation: "Hello", pronunciationTip: "Both syllables have a falling-rising tone (3rd tone).", useCase: "Greeting someone in Mandarin." },
+    ],
+    activities: [
+      { id: "chinese-greetings-act-1", type: "multiple-choice", prompt: "What does 谢谢 mean?", correctAnswer: "thank you", options: ["thank you", "hello", "goodbye", "yes"], vocabularyId: "chinese-vocab-xiexie" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A warm Mandarin teacher for absolute beginners.",
+      voiceStyle: "Clear and slow with tone marks explained after each phrase.",
+      lessonObjective: "Teach the learner to greet and thank someone in Mandarin.",
+      systemPrompt: "Teach a beginner Mandarin greeting lesson. Model each phrase with tone guidance and invite repetition.",
+      openingMessage: "你好！Welcome! We'll learn three essential Mandarin phrases today.",
+      correctionStyle: "Describe the tone shape before correcting the full pronunciation.",
+      targetPhrases: ["你好", "谢谢", "再见"],
+    },
+  },
+  {
+    id: "chinese-introductions",
+    unitId: "chinese-basics-1",
+    languageId: "chinese",
+    title: "Introductions",
+    description: "Say your name and ask how someone is in Mandarin.",
+    order: 2,
+    mode: "phrases",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "chinese-intro-goal-1", title: "Say your name", successCriteria: "Use 我叫 with a name correctly." },
+    ],
+    vocabulary: [
+      { id: "chinese-vocab-wojiao", term: "我叫", translation: "my name is", phoneticHint: "wǒ jiào", partOfSpeech: "phrase", example: "我叫小明。", exampleTranslation: "My name is Xiao Ming.", tags: ["introduction", "starter"] },
+      { id: "chinese-vocab-ninjiao", term: "你叫什么名字", translation: "what is your name?", phoneticHint: "nǐ jiào shénme míngzì", partOfSpeech: "phrase", example: "你叫什么名字？", exampleTranslation: "What is your name?", tags: ["question", "starter"] },
+    ],
+    phrases: [
+      { id: "chinese-phrase-name", phrase: "我叫小明。", translation: "My name is Xiao Ming.", pronunciationTip: "叫 (jiào) has a falling 4th tone — say it sharply downward.", useCase: "Introducing your name in Mandarin." },
+    ],
+    activities: [
+      { id: "chinese-intro-act-1", type: "translate", prompt: "Translate: 我叫小明。", answer: "My name is Xiao Ming.", acceptedAnswers: ["My name is Xiao Ming.", "I am Xiao Ming.", "I'm Xiao Ming."], phraseId: "chinese-phrase-name" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A patient Mandarin conversation coach.",
+      voiceStyle: "Warm and clear with tone guides after each key phrase.",
+      lessonObjective: "Help the learner introduce themselves in Mandarin.",
+      systemPrompt: "Run a short Mandarin introduction practice. Model 我叫, explain tones, and ask the learner to try with their own name.",
+      openingMessage: "你好! 我叫王老师. Now you try — 你叫什么名字?",
+      correctionStyle: "Correct the tone first, then the full phrase slowly.",
+      targetPhrases: ["我叫...", "你叫什么名字？"],
+    },
+  },
+  {
+    id: "chinese-numbers",
+    unitId: "chinese-basics-1",
+    languageId: "chinese",
+    title: "Numbers",
+    description: "Count from one to ten in Mandarin.",
+    order: 3,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "chinese-numbers-goal-1", title: "Count to ten", successCriteria: "Say 一 through 十 in order." },
+    ],
+    vocabulary: [
+      { id: "chinese-vocab-yi", term: "一", translation: "one", phoneticHint: "yī (1st tone)", partOfSpeech: "noun", example: "一个苹果。", exampleTranslation: "One apple.", tags: ["number", "starter"] },
+      { id: "chinese-vocab-er", term: "二", translation: "two", phoneticHint: "èr (4th tone)", partOfSpeech: "noun", example: "二个人。", exampleTranslation: "Two people.", tags: ["number", "starter"] },
+      { id: "chinese-vocab-san", term: "三", translation: "three", phoneticHint: "sān (1st tone)", partOfSpeech: "noun", example: "三只猫。", exampleTranslation: "Three cats.", tags: ["number", "starter"] },
+    ],
+    phrases: [
+      { id: "chinese-phrase-count", phrase: "一、二、三。", translation: "One, two, three.", pronunciationTip: "一 changes tone to 2nd (yí) before a 4th tone syllable.", useCase: "Counting aloud in Mandarin." },
+    ],
+    activities: [
+      { id: "chinese-numbers-act-1", type: "multiple-choice", prompt: "What does 二 mean?", correctAnswer: "two", options: ["one", "two", "three", "four"], vocabularyId: "chinese-vocab-er" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A clear Mandarin tutor who teaches tones through numbers.",
+      voiceStyle: "Slow and precise, emphasizing tone marks on each number.",
+      lessonObjective: "Help the learner count from one to ten in Mandarin.",
+      systemPrompt: "Teach Mandarin numbers with tone guidance. Count together and drill with simple questions.",
+      openingMessage: "一、二、三 — let's count in Mandarin! Pay attention to tones.",
+      correctionStyle: "Name the correct tone shape before repeating the full number.",
+      targetPhrases: ["一 (yī)", "二 (èr)", "三 (sān)", "四 (sì)", "五 (wǔ)"],
+    },
+  },
+  {
+    id: "chinese-food",
+    unitId: "chinese-basics-1",
+    languageId: "chinese",
+    title: "Food & Drinks",
+    description: "Order food and drinks in Mandarin.",
+    order: 4,
+    mode: "phrases",
+    xpReward: 10,
+    estimatedMinutes: 6,
+    goals: [
+      { id: "chinese-food-goal-1", title: "Order a dish", successCriteria: "Use 我要 to order something politely." },
+    ],
+    vocabulary: [
+      { id: "chinese-vocab-shui", term: "水", translation: "water", phoneticHint: "shuǐ (3rd tone)", partOfSpeech: "noun", example: "我要水。", exampleTranslation: "I want water.", tags: ["drink", "starter"] },
+      { id: "chinese-vocab-mifan", term: "米饭", translation: "rice", phoneticHint: "mǐ fàn", partOfSpeech: "noun", example: "我要米饭。", exampleTranslation: "I want rice.", tags: ["food", "starter"] },
+      { id: "chinese-vocab-cha", term: "茶", translation: "tea", phoneticHint: "chá (2nd tone)", partOfSpeech: "noun", example: "我要茶。", exampleTranslation: "I want tea.", tags: ["drink", "starter"] },
+    ],
+    phrases: [
+      { id: "chinese-phrase-order", phrase: "我要水，谢谢。", translation: "I want water, thank you.", pronunciationTip: "我要 (wǒ yào) means I want — common for ordering.", useCase: "Ordering food or drinks in Mandarin." },
+    ],
+    activities: [
+      { id: "chinese-food-act-1", type: "translate", prompt: "Translate: 我要水。", answer: "I want water.", acceptedAnswers: ["I want water.", "I'd like water."], phraseId: "chinese-phrase-order" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A helpful Mandarin restaurant guide.",
+      voiceStyle: "Practical and clear with real ordering scenarios.",
+      lessonObjective: "Help the learner order food and drinks in Mandarin.",
+      systemPrompt: "Role-play a Chinese restaurant scene. Model 我要 ordering phrases and ask the learner to order.",
+      openingMessage: "欢迎光临！What would you like? Let's order in Mandarin.",
+      correctionStyle: "Model the full correct phrase before asking the learner to try again.",
+      targetPhrases: ["我要水。", "我要米饭。", "买单，谢谢。"],
+    },
+  },
+  {
+    id: "chinese-colors",
+    unitId: "chinese-basics-1",
+    languageId: "chinese",
+    title: "Colors",
+    description: "Name common colors in Mandarin.",
+    order: 5,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "chinese-colors-goal-1", title: "Name five colors", successCriteria: "Correctly identify 红, 蓝, 绿, 黄, and 白." },
+    ],
+    vocabulary: [
+      { id: "chinese-vocab-hong", term: "红", translation: "red", phoneticHint: "hóng (2nd tone)", partOfSpeech: "adjective", example: "红色的苹果。", exampleTranslation: "A red apple.", tags: ["color", "starter"] },
+      { id: "chinese-vocab-lan", term: "蓝", translation: "blue", phoneticHint: "lán (2nd tone)", partOfSpeech: "adjective", example: "蓝色的天空。", exampleTranslation: "Blue sky.", tags: ["color", "starter"] },
+      { id: "chinese-vocab-lv", term: "绿", translation: "green", phoneticHint: "lǜ (4th tone)", partOfSpeech: "adjective", example: "绿色的树。", exampleTranslation: "A green tree.", tags: ["color", "starter"] },
+    ],
+    phrases: [
+      { id: "chinese-phrase-color", phrase: "这是什么颜色？", translation: "What color is this?", pronunciationTip: "颜色 (yán sè) means color — both in rising tones.", useCase: "Asking about an object's color." },
+    ],
+    activities: [
+      { id: "chinese-colors-act-1", type: "multiple-choice", prompt: "What does 蓝 mean?", correctAnswer: "blue", options: ["red", "blue", "green", "yellow"], vocabularyId: "chinese-vocab-lan" },
+    ],
+    aiTeacherPrompt: {
+      persona: "A visual Mandarin teacher who connects colors to familiar objects.",
+      voiceStyle: "Clear and descriptive with tone marks explained for each word.",
+      lessonObjective: "Teach the learner five common Mandarin color words.",
+      systemPrompt: "Teach Mandarin colors with everyday object examples. Model each word with tone guidance.",
+      openingMessage: "天空是什么颜色？蓝色！Let's learn colors in Mandarin.",
+      correctionStyle: "Identify the correct tone pattern before correcting the full word.",
+      targetPhrases: ["红 (hóng)", "蓝 (lán)", "绿 (lǜ)", "黄 (huáng)", "白 (bái)"],
+    },
+  },
+  {
+    id: "chinese-family",
+    unitId: "chinese-basics-1",
+    languageId: "chinese",
+    title: "Family & Friends",
+    description: "Talk about family members in Mandarin.",
+    order: 6,
+    mode: "vocabulary",
+    xpReward: 10,
+    estimatedMinutes: 5,
+    goals: [
+      { id: "chinese-family-goal-1", title: "Name family members", successCriteria: "Identify 妈妈, 爸爸, and 哥哥 correctly." },
+    ],
+    vocabulary: [
+      { id: "chinese-vocab-mama", term: "妈妈", translation: "mother", phoneticHint: "māma (1st tones)", partOfSpeech: "noun", example: "我的妈妈很好。", exampleTranslation: "My mother is very kind.", tags: ["family", "starter"] },
+      { id: "chinese-vocab-baba", term: "爸爸", translation: "father", phoneticHint: "bàba (4th + neutral)", partOfSpeech: "noun", example: "爸爸工作。", exampleTranslation: "Dad is working.", tags: ["family", "starter"] },
+      { id: "chinese-vocab-gege", term: "哥哥", translation: "older brother", phoneticHint: "gēge (1st + neutral)", partOfSpeech: "noun", example: "我有一个哥哥。", exampleTranslation: "I have an older brother.", tags: ["family", "starter"] },
+    ],
+    phrases: [
+      { id: "chinese-phrase-family", phrase: "我家有四口人。", translation: "My family has four people.", pronunciationTip: "口 (kǒu) is the counter for family members.", useCase: "Describing the size of your family." },
+    ],
+    activities: [
+      { id: "chinese-family-act-1", type: "phrase-match", prompt: "Match each Mandarin word to English.", pairs: [{ source: "妈妈", target: "mother" }, { source: "爸爸", target: "father" }, { source: "哥哥", target: "older brother" }] },
+    ],
+    aiTeacherPrompt: {
+      persona: "A warm Mandarin teacher who explores family with tone awareness.",
+      voiceStyle: "Gentle and encouraging with pinyin support after each term.",
+      lessonObjective: "Help the learner name common family members in Mandarin.",
+      systemPrompt: "Teach Mandarin family vocabulary with tone guidance. Ask the learner to describe their family.",
+      openingMessage: "告诉我，你家有几口人？ Let's talk about family in Mandarin.",
+      correctionStyle: "Correct tone first, then the syllable, then ask the learner to repeat.",
+      targetPhrases: ["妈妈 (māma)", "爸爸 (bàba)", "哥哥 (gēge)", "姐姐 (jiějie)"],
+    },
+  },
+];
+
+// Merge all lessons
+lessons.push(
+  ...spanishAdditional,
+  ...frenchAdditional,
+  ...japaneseAdditional,
+  ...koreanLessons,
+  ...germanLessons,
+  ...chineseLessons,
+);
+
 export const getLessonsByLanguage = (languageId: Lesson["languageId"]) => {
   return lessons.filter((lesson) => lesson.languageId === languageId);
 };
