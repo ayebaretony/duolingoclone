@@ -20,6 +20,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { usePostHog } from "posthog-react-native";
 
 import { images } from "@/constants/images";
 
@@ -82,6 +83,7 @@ const socialProviders: SocialProvider[] = [
 
 export function AuthScreen({ mode }: AuthScreenProps) {
   const router = useRouter();
+  const posthog = usePostHog();
   const { signIn, fetchStatus: signInFetchStatus } = useSignIn();
   const { signUp, fetchStatus: signUpFetchStatus } = useSignUp();
   const { startSSOFlow } = useSSO();
@@ -133,6 +135,8 @@ export function AuthScreen({ mode }: AuthScreenProps) {
     }
 
     if (mode === "sign-up") {
+      posthog.capture("sign_up_submitted");
+
       const { error } = await signUp.password({
         emailAddress,
         password,
@@ -170,6 +174,7 @@ export function AuthScreen({ mode }: AuthScreenProps) {
       return;
     }
 
+    posthog.capture("social_auth_tapped", { provider: provider.name, mode });
     setSocialLoading(provider.name);
 
     try {
@@ -180,6 +185,7 @@ export function AuthScreen({ mode }: AuthScreenProps) {
 
       if (createdSessionId && setActive) {
         await setActive({ session: createdSessionId });
+        posthog.capture("social_auth_completed", { provider: provider.name, mode });
         goHome();
         return;
       }
@@ -221,6 +227,16 @@ export function AuthScreen({ mode }: AuthScreenProps) {
             return;
           }
 
+          const userId = signUp.createdUserId;
+          const emailAddress = signUp.emailAddress;
+          if (userId) {
+            posthog.identify(userId, {
+              $set: { email: emailAddress },
+              $set_once: { sign_up_date: new Date().toISOString() },
+            });
+          }
+          posthog.capture("sign_up_completed");
+
           goHome();
           return;
         }
@@ -248,6 +264,8 @@ export function AuthScreen({ mode }: AuthScreenProps) {
           showAuthError("Couldn't finish sign in", finalizeError);
           return;
         }
+
+        posthog.capture("sign_in_completed");
 
         goHome();
         return;
