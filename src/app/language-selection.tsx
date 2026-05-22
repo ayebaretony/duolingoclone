@@ -24,9 +24,9 @@ export default function LanguageSelectionScreen() {
     lang.name.toLowerCase().includes(searchText.toLowerCase())
   );
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     if (tempSelected) {
-      setSelectedLanguage(tempSelected);
+      await setSelectedLanguage(tempSelected);
       router.replace("/");
     }
   };

@@ -179,9 +179,8 @@ export default function HomeScreen() {
             {TODAY_PLAN.map((item, index) => (
               <View
                 key={item.id}
-                className={`flex-row items-center px-4 py-3.5 gap-3.5${
-                  index < TODAY_PLAN.length - 1 ? " border-b border-border" : ""
-                }`}
+                className="flex-row items-center px-4 py-3.5 gap-3.5"
+                style={index < TODAY_PLAN.length - 1 ? styles.planItemBorder : undefined}
               >
                 <View
                   style={{ backgroundColor: item.iconBg }}
@@ -241,6 +240,11 @@ const styles = StyleSheet.create({
     width: 96,
     height: 96,
     resizeMode: "contain",
+  },
+  // Conditional border — dynamic style prop, can't use template-literal className
+  planItemBorder: {
+    borderBottomWidth: 1,
+    borderBottomColor: colors.neutral.border,
   },
   // Pressable.style — per project exception rule
   continueButton: {

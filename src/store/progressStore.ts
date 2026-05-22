@@ -36,12 +36,11 @@ export const useProgressStore = create<ProgressStore>((set, get) => ({
   dailyGoalXP: 20,
   hasHydrated: false,
   addXP: async (amount) => {
-    const next = {
-      ...get(),
-      currentDailyXP: get().currentDailyXP + amount,
-    };
-    set({ currentDailyXP: next.currentDailyXP });
-    await save({ currentDailyXP: next.currentDailyXP, streakCount: get().streakCount, completedLessonIds: get().completedLessonIds });
+    if (!Number.isFinite(amount) || amount < 0) return;
+    const { currentDailyXP, streakCount, completedLessonIds } = get();
+    const newXP = currentDailyXP + amount;
+    set({ currentDailyXP: newXP });
+    await save({ currentDailyXP: newXP, streakCount, completedLessonIds });
   },
   completeLesson: async (lessonId) => {
     const ids = get().completedLessonIds;
@@ -55,12 +54,13 @@ export const useProgressStore = create<ProgressStore>((set, get) => ({
       const raw = await AsyncStorage.getItem(PROGRESS_STORAGE_KEY);
       if (raw) {
         const parsed: Partial<PersistedProgress> = JSON.parse(raw);
-        set({
-          currentDailyXP: parsed.currentDailyXP ?? DEFAULT_STATE.currentDailyXP,
-          streakCount: parsed.streakCount ?? DEFAULT_STATE.streakCount,
-          completedLessonIds: parsed.completedLessonIds ?? DEFAULT_STATE.completedLessonIds,
-          hasHydrated: true,
-        });
+        const currentDailyXP = typeof parsed.currentDailyXP === "number" ? parsed.currentDailyXP : DEFAULT_STATE.currentDailyXP;
+        const streakCount = typeof parsed.streakCount === "number" ? parsed.streakCount : DEFAULT_STATE.streakCount;
+        const completedLessonIds =
+          Array.isArray(parsed.completedLessonIds) && parsed.completedLessonIds.every((id) => typeof id === "string")
+            ? parsed.completedLessonIds
+            : DEFAULT_STATE.completedLessonIds;
+        set({ currentDailyXP, streakCount, completedLessonIds, hasHydrated: true });
       } else {
         set({ hasHydrated: true });
       }
