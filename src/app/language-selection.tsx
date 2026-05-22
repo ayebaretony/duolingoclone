@@ -10,12 +10,14 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { usePostHog } from "posthog-react-native";
 import { languages } from "@/data/languages";
 import { useLanguageStore } from "@/store/languageStore";
 import { images } from "@/constants/images";
 
 export default function LanguageSelectionScreen() {
   const router = useRouter();
+  const posthog = usePostHog();
   const { selectedLanguageId, setSelectedLanguage } = useLanguageStore();
   const [searchText, setSearchText] = useState("");
   const [tempSelected, setTempSelected] = useState(selectedLanguageId);
@@ -26,6 +28,8 @@ export default function LanguageSelectionScreen() {
 
   const handleConfirm = async () => {
     if (tempSelected) {
+      const selectedLang = languages.find((l) => l.id === tempSelected);
+      posthog.capture("language_confirmed", { language_id: tempSelected, language_name: selectedLang?.name ?? null });
       await setSelectedLanguage(tempSelected);
       router.replace("/");
     }

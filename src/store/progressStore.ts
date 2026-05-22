@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
+import { posthog } from "@/lib/posthog";
 
 const PROGRESS_STORAGE_KEY = "progress-storage";
 
@@ -40,6 +41,7 @@ export const useProgressStore = create<ProgressStore>((set, get) => ({
     const { currentDailyXP, streakCount, completedLessonIds } = get();
     const newXP = currentDailyXP + amount;
     set({ currentDailyXP: newXP });
+    posthog.capture("xp_earned", { amount, total_xp: newXP });
     await save({ currentDailyXP: newXP, streakCount, completedLessonIds });
   },
   completeLesson: async (lessonId) => {
@@ -47,6 +49,7 @@ export const useProgressStore = create<ProgressStore>((set, get) => ({
     if (ids.includes(lessonId)) return;
     const next = [...ids, lessonId];
     set({ completedLessonIds: next });
+    posthog.capture("lesson_completed", { lesson_id: lessonId, total_completed: next.length });
     await save({ currentDailyXP: get().currentDailyXP, streakCount: get().streakCount, completedLessonIds: next });
   },
   hydrate: async () => {

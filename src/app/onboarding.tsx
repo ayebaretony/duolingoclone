@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { styled } from "nativewind";
 import { Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { usePostHog } from "posthog-react-native";
 
 import { images } from "@/constants/images";
 
@@ -12,6 +13,7 @@ const NativeWindImage = styled(Image);
 
 export default function OnboardingScreen() {
   const { isLoaded, isSignedIn } = useAuth();
+  const posthog = usePostHog();
 
   if (!isLoaded) {
     return null;
@@ -91,6 +93,7 @@ export default function OnboardingScreen() {
             <Pressable
               className="btn-primary h-[84px] w-full flex-row items-center justify-center"
               style={({ pressed }) => ({ opacity: pressed ? 0.8 : 1 })}
+              onPress={() => posthog.capture("get_started_tapped")}
             >
               <Text className="font-poppins-semibold text-[25px] leading-[32px] text-white">
                 Get Started

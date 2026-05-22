@@ -3,6 +3,7 @@ import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-nati
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useUser } from "@clerk/expo";
+import { usePostHog } from "posthog-react-native";
 
 import { getLanguageById } from "@/data/languages";
 import { getUnitsByLanguage } from "@/data/units";
@@ -64,6 +65,7 @@ const TODAY_PLAN: PlanItem[] = [
 
 export default function HomeScreen() {
   const { user } = useUser();
+  const posthog = usePostHog();
   const { selectedLanguageId } = useLanguageStore();
   const { currentDailyXP, dailyGoalXP, streakCount, hydrate } = useProgressStore();
 
@@ -152,7 +154,10 @@ export default function HomeScreen() {
             <Text className="font-poppins text-[13px] text-white/70 mb-1">
               {unitLevel} · Unit {unitNumber}
             </Text>
-            <Pressable style={styles.continueButton}>
+            <Pressable
+              style={styles.continueButton}
+              onPress={() => posthog.capture("continue_learning_tapped", { language: language?.name ?? null, unit: unitNumber, level: unitLevel })}
+            >
               <Text className="font-poppins-semibold text-sm text-[#3E2197]">Continue</Text>
             </Pressable>
           </View>
@@ -177,10 +182,11 @@ export default function HomeScreen() {
             className="bg-white rounded-[20px] border border-border mx-5 overflow-hidden"
           >
             {TODAY_PLAN.map((item, index) => (
-              <View
+              <Pressable
                 key={item.id}
                 className="flex-row items-center px-4 py-3.5 gap-3.5"
                 style={index < TODAY_PLAN.length - 1 ? styles.planItemBorder : undefined}
+                onPress={() => posthog.capture("today_plan_item_tapped", { item_title: item.title, item_id: item.id, completed: item.completed })}
               >
                 <View
                   style={{ backgroundColor: item.iconBg }}
@@ -203,7 +209,7 @@ export default function HomeScreen() {
                 ) : (
                   <View className="w-[26px] h-[26px] rounded-full border-2 border-border" />
                 )}
-              </View>
+              </Pressable>
             ))}
           </View>
         </View>
