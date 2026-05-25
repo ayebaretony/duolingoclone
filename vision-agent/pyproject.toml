@@ -1,0 +1,9 @@
+[project]
+name = "language-teacher-agent"
+version = "0.1.0"
+description = "AI language teacher voice agent powered by Stream Edge + OpenAI Realtime"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "vision-agents[getstream,openai]",
+    "python-dotenv",
+]
